@@ -23,7 +23,7 @@ go build ping.go
 ## Usage
 The CLI app supports both IPV4 and IPV6 addresses. The TTL(Time to live) and delay values can be provided using -ttl , -d options respectively. if no options are provided, The app runs with default values of 64 for ttl and 1s dealy.   
 ```
-./ping [-ttl TTL Value][-d delay_between_messages] <IP address/hostname>
+./ping [-ttl TTLValue][-d delay_between_messages] <IP address/hostname>
 ```
 Examples:
 ```
@@ -37,5 +37,5 @@ Examples:
 ## Extra Credit
 
 1. Added support for both IPv4 and IPv6.
-2. App allows to set TTL as an argument and report the corresponding "time exceeded” ICMP messages.
+2. App allows to set TTL as an argument and reports the corresponding "time exceeded” ICMP messages.
 3. Added -d option to allow the delay between messages as an argument.
