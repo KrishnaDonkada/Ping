@@ -83,9 +83,9 @@ func (sender * ping) sendIcmp(con *icmp.PacketConn){
 			sent_time := time.Now()
 			sender.mux.Lock()
 			sender.KVStore[sender.Seq] = sent_time
+			sender.packetssent++
 			sender.mux.Unlock()
 			sender.Seq++
-			sender.packetssent++
 			time.Sleep(sender.delay)
 		}
 
@@ -223,12 +223,12 @@ func main() {
 	}()
 	x := <-sender.done
 	//fmt.Println("received signa")
-	//sender.done1<-1
-	//sender.done2<-2
-	//sender.done3<-3
+	sender.done1<-1
+	sender.done2<-2
+	sender.done3<-3
 	//fmt.Println("sent to the channels")
 
-	//sender.wg.Wait()
+	sender.wg.Wait()
 	//fmt.Println("wait done")
 	sender.closeConnection(con)
 	if x {
@@ -251,8 +251,9 @@ func (sender * ping) parseMessage() {
 	for {
 		select {
 		case packet:=<-sender.replychan:
-            sender.packetsrecived++
+
 			sender.mux.Lock()
+			sender.packetsrecived++
             fmt.Println("Reply from",sender.IPAddr,": bytes:",packet.nunBytes," icmp_seq:",packet.echo.Seq," TTL:",packet.ttl," RTT:",packet.recvTime.Sub(sender.KVStore[packet.echo.Seq]))
             delete(sender.KVStore,packet.echo.Seq)
 			sender.mux.Unlock()
