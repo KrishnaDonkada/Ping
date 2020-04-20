@@ -5,7 +5,10 @@
 Small Ping CLI application for MacOS or Linux. The CLI app accepts a hostname or an IP address as its argument along with options to provide TTL and Dealy values.The app emits "echo requests" in an infinite loop with peridoic delay. It report loss and RTT times for each sent message.
 
 ## Libraries
-The application is Built in Go. Packages used: golang.org/x/net/icmp golang.org/x/net/ipv4 golang.org/x/net/ipv6
+The application is Built in Go. Following Packages were used: 
+golang.org/x/net/icmp 
+golang.org/x/net/ipv4 
+golang.org/x/net/ipv6
 
 ## Build
 download and install packages and dependencies
