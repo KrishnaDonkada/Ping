@@ -1,4 +1,4 @@
-# Cloudflare Internship Application: Systems- PING
+# Systems- PING
 
 ## What is it?
 
